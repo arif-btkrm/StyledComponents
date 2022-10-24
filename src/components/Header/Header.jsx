@@ -14,7 +14,7 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = ({ modalController }) => {
-  console.log("Header Called");
+  // console.log("Header Called");
   // console.log(modalController);
   return (
     <HeaderContainer>

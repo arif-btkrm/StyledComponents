@@ -7,8 +7,8 @@ const ModalContainer = styled.div``;
 
 const Modal = ({ modalController }) => {
   const [loginPart, setLoginPart] = useState(true);
-  console.log("Modal Called");
-  console.log(modalController);
+  // console.log("Modal Called");
+  // console.log(modalController);
   return (
     <ModalContainer>
       {loginPart ? (

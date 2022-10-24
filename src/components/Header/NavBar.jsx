@@ -7,13 +7,27 @@ import {
   FaSignOutAlt,
   FaUserCircle,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import NavItem from "./NavItem";
+import NavList from "./NavList";
 
 const NavContainer = styled.div`
-  color: white;
   display: flex;
   justify-content: space-around;
+  border-radious: 10px;
+`;
+
+const MyNavLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: #7678ed;
+    background-color: white;
+  }
+  &.active {
+    color: #7678ed;
+    background-color: white;
+  }
 `;
 
 const NavBar = ({ openModal }) => {
@@ -21,23 +35,29 @@ const NavBar = ({ openModal }) => {
   // console.log(openModal(true));
   return (
     <NavContainer>
-      <NavItem title="Collections" logo={<FaItchIo />} />
-      <NavItem title="Cart" logo={<FaCartPlus />} />
-      <NavItem title="Announcement" logo={<FaBullhorn />} />
+      {/* <NavList title="Home" to="/" logo={<FaHome />} /> */}
+      <MyNavLink to="/collections">
+        <NavList title="Collections" logo={<FaItchIo />} />
+      </MyNavLink>
+      <MyNavLink to="/cart">
+        <NavList title="Cart" logo={<FaCartPlus />} />
+      </MyNavLink>
+      <MyNavLink to="/announcement">
+        <NavList title="Announcement" logo={<FaBullhorn />} />
+      </MyNavLink>
       {login ? (
         <NavContainer>
-          <NavItem title="Profile" logo={<FaUserCircle />} />
-          <NavItem title="LogOut" logo={<FaSignOutAlt />} />
+          <MyNavLink>
+            <NavList title="Profile" to="/profile" logo={<FaUserCircle />} />
+          </MyNavLink>
+          <MyNavLink>
+            <NavList title="LogOut" logo={<FaSignOutAlt />} />
+          </MyNavLink>
         </NavContainer>
       ) : (
-        <NavItem
-          onClick={() => console.log("LogIn Called")}
-          title="LogIn"
-          logo={<FaSignInAlt />}
-        />
-        // <button onClick={() => openModal(true)}>
-        //   Login <FaSignInAlt />
-        // </button>
+        <MyNavLink onClick={() => openModal(true)}>
+          <NavList title="LogIn" logo={<FaSignInAlt />} />
+        </MyNavLink>
       )}
     </NavContainer>
   );
